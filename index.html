@@ -6,7 +6,7 @@
 <title>For My Love ❤️</title>
 <style>
 body {
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
   font-family: 'Segoe UI', sans-serif;
   text-align: center;
   color: white;
@@ -16,76 +16,75 @@ body {
   max-width: 600px;
   margin: auto;
   background: rgba(255,255,255,0.15);
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
-input {
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  width: 80%;
-  margin: 15px 0;
+h1, h2 {
+  margin-bottom: 15px;
 }
 button {
-  background: #ff4d6d;
+  background: rgba(255,255,255,0.9);
   border: none;
-  color: white;
-  padding: 12px 25px;
+  color: #ff3b6f;
+  padding: 14px 18px;
+  margin: 10px 0;
+  width: 100%;
   font-size: 16px;
-  border-radius: 25px;
+  border-radius: 18px;
   cursor: pointer;
+  transition: 0.3s;
 }
-button:hover { background: #ff1f4a; }
+button:hover {
+  background: white;
+  transform: scale(1.03);
+}
+.heart {
+  font-size: 30px;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.15);}
+  100% {transform: scale(1);}
+}
 </style>
 </head>
 
 <body>
 
 <div class="container" id="game">
-  <h1>❤️ A Little Love Game ❤️</h1>
+  <h1 class="heart">❤️</h1>
+  <h1>A Little Love Game</h1>
   <h2 id="question"></h2>
-  <input type="text" id="answer" placeholder="Your answer here...">
-  <br>
-  <button onclick="checkAnswer()">Next</button>
+  <div id="options"></div>
 </div>
 
 <script>
-const questions = [
-  { q: "When was the first time we met? 💕", a: "19 july 2025" },
-  { q: "What was the name of the hotel I proposed to you? 💍", a: "river view city central" },
-  { q: "What was the first dessert we had together? 🍨", a: "alcohol ice cream" },
-  { q: "Who loves you more? 😘", a: "me" }
+const quiz = [
+  {
+    q: "When was the first time we met? 💕",
+    options: ["19 July 2025", "14 Feb 2025", "1 Jan 2025", "20 Aug 2025"],
+    correct: 0
+  },
+  {
+    q: "Where did I propose to you? 💍",
+    options: ["Your Home", "Hilton KL", "The Magazine Boutique","River View City Central"],
+    correct: 3
+  },
+  {
+    q: "What was the first dessert we had together? 🍨",
+    options: ["Creme Brulee", "Chocolate Lava Cake", "Alcohol Ice Cream", "Waffle & Berries"],
+    correct: 2
+  },
+  {
+    q: "Who is my forever Valentine? 😘",
+    options: ["You", "Me", "Us", "Forever & Always"],
+    correct: 0
+  }
 ];
 
 let current = 0;
 
 function showQuestion() {
-  document.getElementById("question").innerText = questions[current].q;
-}
-
-function checkAnswer() {
-  const ans = document.getElementById("answer").value.toLowerCase().trim();
-  if(ans === questions[current].a) {
-    current++;
-    document.getElementById("answer").value = "";
-    if(current < questions.length) {
-      showQuestion();
-    } else {
-      document.getElementById("game").innerHTML = `
-        <h1>💖 Will You Be My Valentine? 💖</h1>
-        <h2>Every moment with you is my favorite moment.</h2>
-        <h2>🌹 Be mine forever 🌹</h2>
-        <button onclick="alert('She said YES 😍')">YES 💕</button>
-      `;
-    }
-  } else {
-    alert("Oops 😜 Try again, my love ❤️");
-  }
-}
-
-showQuestion();
-</script>
-
-</body>
-</html>
+  document.getE
